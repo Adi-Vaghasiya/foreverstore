@@ -1,6 +1,8 @@
 package p2p
 
 import (
+	"crypto/sha1"
+	"encoding/hex"
 	"fmt"
 	"net"
 )
@@ -61,3 +63,8 @@ func (t *TCPTransport) handleConn(conn net.Conn) {
 // func (t *TCPTransport) ListneAndAccept(conn net.Conn, outbound bool) (net.Conn, error) {
 
 // }
+func CreateHash(key string) string {
+	hash := sha1.Sum([]byte(key))
+	hashStr := hex.EncodeToString(hash[:])
+	return hashStr
+}
