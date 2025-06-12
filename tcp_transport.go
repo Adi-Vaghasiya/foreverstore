@@ -84,9 +84,9 @@ func (t *TCPTransport) PathSplitting(s string) (string, error) {
 	for i := 0; i < slicelenth; i++ {
 		from, to := i*blocksize, (i*blocksize)+blocksize
 		paths[i] = s[from:to]
-		WholePath = strings.Join(paths, "/")
 
 	}
+	WholePath = strings.Join(paths, "/")
 	fmt.Println(WholePath)
 	return t.DirCreation(WholePath)
 
